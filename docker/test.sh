@@ -1,5 +1,4 @@
 #!/bin/sh
-# From https://github.com/HardySimpson/docker-cleanup
 
 >/tmp/run_image_ids.$$
 
