@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set  -e
 # Stop & Remove All Dockers
 for inst in `docker ps -a | awk '{print $1}' | egrep -v 'd5c9e5830be8|CONTAINER'`
    do
@@ -12,7 +12,7 @@ for inst in `docker ps -a | awk '{print $1}' | egrep -v 'd5c9e5830be8|CONTAINER'
  done
 
 # Build & Run All Dockers
-cd /home/jenkins/workspace/Docker/docker
+cd /home/jenkins/workspace/RC-DOCKER/docker
 for dfile in `ls Dockerfile.*`
  do
       osname=`echo $dfile | awk -F\. '{print $2}'`
@@ -20,6 +20,7 @@ for dfile in `ls Dockerfile.*`
       docker build -t $osname --file $dfile .
       [ $? -ne 0 ] && echo something went wrong && continue
       echo running $osname
-      docker run -dit $osname /bin/bash
-      echo
+#      docker run -dit $osname /bin/bash
+#      echo
  done
+

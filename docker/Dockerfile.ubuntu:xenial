@@ -10,17 +10,19 @@ RUN apt-get update && apt-get install -y \
     debconf-utils \
     wget
 
-#RUN add-apt-repository -y ppa:webupd8team/java && apt-get update && \
-#    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
-#    apt-get install -y oracle-java8-installer
+RUN add-apt-repository -y ppa:webupd8team/java && apt-get update && \
+    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
+    apt-get install -y oracle-java8-installer
 
 # create jenkins user, make sudo
-#ARG JENKINS_GID=1999
-#ARG JENKINS_UID=1999
-#RUN groupadd -g $JENKINS_GID jenkins && \
-#    useradd -m -d /home/jenkins -u $JENKINS_UID -g jenkins -s /bin/bash jenkins && \
-#    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+ARG JENKINS_GID=1999
+ARG JENKINS_UID=1999
 
-#USER jenkins
-#COPY docker/scripts/install.linuxbrew /tmp/
-#RUN /bin/bash /tmp/install.linuxbrew
+RUN (groupadd -g $JENKINS_GID jenkins; \
+    useradd -m -d /home/jenkins -u $JENKINS_UID -g jenkins -s /bin/bash jenkins; \
+    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers)
+
+USER jenkins
+COPY scripts/docker.install.linuxbrew /tmp
+RUN (/bin/bash /tmp/docker.install.linuxbrew)
+
