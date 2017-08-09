@@ -11,11 +11,12 @@ RUN yum -y update && \
     ruby \
     rubygem-minitest \
     perl-Digest-SHA \
+    which \
     java-1.8.0-openjdk-devel 
 
 
 # sudo defaults to requiretty on centos7
-#RUN sed -i  's/Defaults    requiretty/Defaults !requiretty/' /etc/sudoers
+RUN sed -i  's/Defaults    requiretty/Defaults !requiretty/' /etc/sudoers
 
 
 # create jenkins user, make sudo
