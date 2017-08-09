@@ -2,7 +2,6 @@
 set  -e
 # Stop & Remove All Dockers
 id
-hostname
 sudo chmod o=rw /var/run/docker.sock
 for inst in `docker ps -a | awk '{print $1}' | egrep -v '2161009001df|CONTAINER'|egrep -v '0efd18157cae|CONTAINER'`
    do
