@@ -8,6 +8,7 @@ RUN apt-get install -y \
     python-setuptools \
     ruby \
     openssh-server \
+    language-pack-en-base  \
     python-software-properties \
     debconf-utils
 
