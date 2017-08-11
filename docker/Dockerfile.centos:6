@@ -1,7 +1,6 @@
 FROM centos:6
+
 USER root
-
-
 RUN yum -y update && \
     yum groupinstall -y "Development Tools" && \
     yum install -y \

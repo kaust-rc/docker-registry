@@ -1,7 +1,7 @@
-FROM biolinux:8
-USER root
+FROM gawbul/docker-bio-linux8
 
-RUN apt-get update &&
+USER root
+RUN apt-get update && \
     apt-get install -y \
     build-essential \
     curl \
