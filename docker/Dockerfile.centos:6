@@ -2,7 +2,8 @@ FROM centos:6
 USER root
 
 
-RUN yum groupinstall -y "Development Tools"  \
+RUN yum -y update && \
+    yum groupinstall -y "Development Tools" && \
     yum install -y \
     curl \
     git \
