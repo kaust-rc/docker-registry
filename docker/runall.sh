@@ -21,15 +21,18 @@ for dfile in `ls Dockerfile.*`
       echo building $osname
       docker build -t $osname --file $dfile .
       [ $? -ne 0 ] && echo something went wrong && continue
+      docker tag $osname 10.254.154.110/$osname
+      docker push 10.254.154.110/$osname
 #     echo running $osname
 #      docker run -dit $osname /bin/bash
 #      echo
- done
-for dfile in `ls Dockerfile.*`
- do
-      osname=`echo $dfile | awk -F\. '{print $2}'`
-
-        docker tag $osname 10.254.154.110/$osname
-        docker push 10.254.154.110/$osname
-
 done
+
+#for dfile in `ls Dockerfile.*`
+#do
+#      osname=`echo $dfile | awk -F\. '{print $2}'`
+#
+#        docker tag $osname 10.254.154.110/$osname
+#        docker push 10.254.154.110/$osname
+#
+#done
