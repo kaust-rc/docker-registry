@@ -4,7 +4,7 @@ export KAUST_APPS_ROOT=/opt/share
 
 export KAUST_MODULES_ROOT=$KAUST_APPS_ROOT/modules
 
-rel=$(lsb_release -d | gawk -F"\t" '{print $2}')
+rel=$(lsb_release -d | awk -F"\t" '{print $2}')
 os=$([[ $rel == *"Ubuntu"* ]] && echo ubuntu || echo centos)
 # Order is important here, paths first in the list have precedence
 MODULEPATH=~/local/modulefiles:$KAUST_MODULES_ROOT/$os:$KAUST_MODULES_ROOT/applications
