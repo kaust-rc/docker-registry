@@ -14,10 +14,8 @@ RUN yum -y update && \
     which \
     java-1.8.0-openjdk-devel
 
-
 # sudo defaults to requiretty on centos7
 #RUN sed -i  's/Defaults    requiretty/Defaults !requiretty/' /etc/sudoers
-
 
 # create jenkins user, make sudo
 ARG JENKINS_GID=1999

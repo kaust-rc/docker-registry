@@ -7,7 +7,8 @@ add-apt-repository -y ppa:webupd8team/java
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
 apt-get install -y oracle-java8-installer
 
-useradd -md /home/jenkins -s /bin/bash jenkins
+groupadd -g 1999 jenkins
+useradd -md /home/jenkins -u 1999 -g jenkins -s /bin/bash jenkins
 su - jenkins -c '
 umask 077
 mkdir -p ~/.ssh
