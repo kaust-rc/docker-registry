@@ -22,8 +22,8 @@ RUN (groupadd -g $JENKINS_GID jenkins; \
     echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers)
 
 # create gitlab-runner user, make sudo
-ARG GITLAB_RUNNER_GID=999
-ARG GITLAB_RUNNER_UID=998
+ARG GITLAB_RUNNER_GID=998
+ARG GITLAB_RUNNER_UID=999
 
 RUN (groupadd -g $GITLAB_RUNNER_GID gitlab-runner; \
     useradd -m -d /home/gitlab-runner -u $GITLAB_RUNNER_UID -g gitlab-runner -s /bin/bash gitlab-runner; \
