@@ -10,7 +10,8 @@ RUN apt-get update && \
     ruby \
     python-software-properties \
     debconf-utils \
-    wget
+    wget \
+    libxt6
 
 # create jenkins user, make sudo
 ARG JENKINS_GID=1999
