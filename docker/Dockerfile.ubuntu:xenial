@@ -11,7 +11,8 @@ RUN apt-get update && \
     python-software-properties \
     debconf-utils \
     wget \
-    libxt6
+    libxt6 \
+    libxmu6
 
 # create jenkins user, make sudo
 ARG JENKINS_GID=1999
