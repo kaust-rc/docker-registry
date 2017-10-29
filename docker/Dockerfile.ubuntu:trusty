@@ -10,8 +10,10 @@ RUN apt-get update && \
     ruby \
     python-software-properties \
     debconf-utils \
-    libxt6
-
+    libxt6 \
+    libxmu6 \
+    lsb-core
+    
 # create jenkins user, make sudo. try to keep this toward the bottom for less cache busting
 ARG JENKINS_GID=1999
 ARG JENKINS_UID=1999
